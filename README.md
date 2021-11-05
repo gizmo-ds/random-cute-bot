@@ -22,7 +22,7 @@ deno run --allow-net init.ts [ClientID] [Bot token]
   | Name | Free | Deploy |
   | ---- | ---- | ---- |
   | Deno Deploy | ? ([free now](https://deno.com/deploy/docs/pricing-and-limits/)) | [![Deploy button](https://deno.com/deno-deploy-button.svg)](https://dash.deno.com/new?url=https://raw.githubusercontent.com/GizmoOAO/random-cute-bot/main/random-cute.ts&env=DISCORD_PUBLIC_KEY) |
-  | Vercel | √ | coming soon |
+  | Vercel | √ | [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/GizmoOAO/random-cute-bot) |
 
 ## Thanks
 

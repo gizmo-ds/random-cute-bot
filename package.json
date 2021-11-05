@@ -1,0 +1,22 @@
+{
+  "name": "random-cute-bot",
+  "version": "1.0.0",
+  "description": "Random Cute Bot",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vc dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GizmoOAO/random-cute-bot.git"
+  },
+  "author": "Gizmo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GizmoOAO/random-cute-bot/issues"
+  },
+  "homepage": "https://github.com/GizmoOAO/random-cute-bot#readme",
+  "devDependencies": {
+    "vercel": "^23.1.2"
+  }
+}
