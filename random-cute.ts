@@ -9,6 +9,14 @@ import { findCuteCat, findCuteDog, findCuteFox } from "./cutes.ts";
 serve({ "/": home });
 
 async function home(request: Request) {
+  if (request.method === "GET") {
+    return new Response(null, {
+      headers: {
+        location: "https://github.com/GizmoOAO/random-cute-bot",
+      },
+      status: 302,
+    });
+  }
   const { error } = await validateRequest(request, {
     POST: { headers: ["X-Signature-Ed25519", "X-Signature-Timestamp"] },
   });

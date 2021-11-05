@@ -4,6 +4,14 @@ import { cuteData, DiscordRequest, verifySignature } from "../discord.ts";
 import { findCuteCat, findCuteDog, findCuteFox } from "../cutes.ts";
 
 export default async (request: ServerRequest) => {
+  if (request.method === "GET") {
+    const headers = new Headers();
+    headers.set("location", "https://github.com/GizmoOAO/random-cute-bot");
+    return request.respond({
+      headers: headers,
+      status: 302,
+    });
+  }
   const signature = request.headers.get("X-Signature-Ed25519")!;
   const timestamp = request.headers.get("X-Signature-Timestamp")!;
   const bodyStr = new TextDecoder().decode(await readAll(request.body));

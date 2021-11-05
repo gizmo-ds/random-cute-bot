@@ -1,5 +1,11 @@
 {
   "functions": {
     "api/**/*.[jt]s": { "runtime": "vercel-deno@1.1.0" }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/api/random-cute.ts"
+    }
+  ]
 }
