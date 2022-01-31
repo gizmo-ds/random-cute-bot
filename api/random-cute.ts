@@ -1,7 +1,7 @@
 import { ServerRequest } from "https://deno.land/std@0.100.0/http/server.ts";
 import { readAll } from "https://deno.land/std@0.113.0/streams/conversion.ts";
 import { cuteData, DiscordRequest, verifySignature } from "../discord.ts";
-import { findCuteCat, findCuteDog, findCuteFox } from "../cutes.ts";
+import { cutes } from "../cutes.ts";
 
 export default async (request: ServerRequest) => {
   if (request.method === "GET") {
@@ -28,34 +28,10 @@ export default async (request: ServerRequest) => {
   }
 
   if (req.type === 2) {
-    switch (req.data.name) {
-      case "cat":
-        try {
-          const cute = await findCuteCat();
-          return json(request, cuteData("Cat", "random.cat", cute));
-        } catch (error) {
-          return json(request, { error: error }, 500);
-        }
-
-      case "dog":
-        try {
-          const cute = await findCuteDog();
-          return json(request, cuteData("Dog", "dog.ceo", cute));
-        } catch (error) {
-          return json(request, { error: error }, 500);
-        }
-
-      case "fox":
-        try {
-          const cute = await findCuteFox();
-          return json(request, cuteData("Fox", "randomfox.ca", cute));
-        } catch (error) {
-          return json(request, { error: error }, 500);
-        }
-
-      default:
-        return json(request, { error: "bad request" }, 400);
-    }
+    const cute = cutes.find((cute) => cute.command === req.data.name);
+    if (!cute) return json(request, { error: "command not found" }, 500);
+    const img = await cute.func();
+    return json(request, cuteData(cute.name, cute.provider, img));
   }
 
   return json(request, { error: "bad request" }, 400);

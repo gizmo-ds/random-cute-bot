@@ -9,7 +9,7 @@ interface data {
   type: number;
 }
 
-export function cuteData(name: string, from: string, url: string) {
+export function cuteData(name: string, provider: string, url: string) {
   return {
     type: 4,
     data: {
@@ -18,7 +18,7 @@ export function cuteData(name: string, from: string, url: string) {
           title: `Random ${name}`,
           type: "image",
           color: 0xffcc80,
-          footer: from ? { text: `Image from ${from}` } : undefined,
+          footer: provider ? { text: `Image from ${provider}` } : undefined,
           image: { url: url },
           url: url,
         },
