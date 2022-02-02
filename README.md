@@ -2,8 +2,6 @@
 
 一个纯粹的 Discord 机器人, 可以使用 [斜线命令](https://discord.com/developers/docs/interactions/application-commands) 获取可爱的图片.
 
-[Invite bot](https://discord.com/api/oauth2/authorize?client_id=905952658219733012&scope=applications.commands)
-
 ![Screenshot1](images/screenshot1.png)
 
 ![Screenshot1](images/screenshot2.png)
