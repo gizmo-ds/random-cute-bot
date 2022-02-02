@@ -4,7 +4,7 @@ import {
   validateRequest,
 } from "https://deno.land/x/sift@0.4.0/mod.ts";
 import { cuteData, DiscordRequest, verifySignature } from "./discord.ts";
-import { findCuteCat, findCuteDog, findCuteFox } from "./cutes.ts";
+import { cutes } from "./cutes.ts";
 
 serve({ "/": home });
 
@@ -28,10 +28,7 @@ async function home(request: Request) {
 
   const valid = verifySignature(signature, timestamp, body);
   if (!valid) {
-    return json(
-      { error: "Invalid request" },
-      { status: 401 },
-    );
+    return json({ error: "Invalid request" }, { status: 401 });
   }
 
   const req: DiscordRequest = JSON.parse(body);
@@ -39,34 +36,10 @@ async function home(request: Request) {
   if (req.type === 1) return json({ type: 1 });
 
   if (req.type === 2) {
-    switch (req.data.name) {
-      case "cat":
-        try {
-          const cute = await findCuteCat();
-          return json(cuteData("Cat", "random.cat", cute));
-        } catch (error) {
-          return json({ error: error }, { status: 500 });
-        }
-
-      case "dog":
-        try {
-          const cute = await findCuteDog();
-          return json(cuteData("Dog", "dog.ceo", cute));
-        } catch (error) {
-          return json({ error: error }, { status: 500 });
-        }
-
-      case "fox":
-        try {
-          const cute = await findCuteFox();
-          return json(cuteData("Fox", "randomfox.ca", cute));
-        } catch (error) {
-          return json({ error: error }, { status: 500 });
-        }
-
-      default:
-        return json({ error: "bad request" }, { status: 400 });
-    }
+    const cute = cutes.find((cute) => cute.command === req.data.name);
+    if (!cute) return json({ error: "command not found" }, { status: 500 });
+    const img = await cute.func();
+    return json(cuteData(cute.name, cute.provider, img));
   }
 
   return json({ error: "bad request" }, { status: 400 });
