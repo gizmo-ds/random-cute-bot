@@ -9,13 +9,13 @@ export const cutes: Cute[] = [
   {
     name: "Cat",
     command: "cat",
-    provider: "random.cat",
+    provider: "thecatapi.com",
     func(): Promise<string> {
       return new Promise<string>((resolve, reject) => {
-        fetch("https://aws.random.cat/meow")
+        fetch("https://api.thecatapi.com/v1/images/search?limit=1")
           .then((resp) => resp.json())
           .then((data) => {
-            return resolve(data.file);
+            return resolve(data[0].url);
           })
           .catch((err) => {
             return reject(err);
