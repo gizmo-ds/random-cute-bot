@@ -17,10 +17,10 @@ deno run --allow-net init.ts [ClientID] [Bot token]
 
 3. Deploy
 
-  | Name | Free | Deploy |
-  | ---- | ---- | ---- |
-  | Deno Deploy | ? ([free now](https://deno.com/deploy/docs/pricing-and-limits/)) | [![Deploy button](https://deno.com/deno-deploy-button.svg)](https://dash.deno.com/new?url=https://raw.githubusercontent.com/GizmoOAO/random-cute-bot/main/random-cute.ts&env=DISCORD_PUBLIC_KEY) |
-  | Vercel | √ | [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FGizmoOAO%2Frandom-cute-bot&env=DISCORD_PUBLIC_KEY) |
+| Name        | Deploy                                                                                                                                                                                           |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Deno Deploy | [![Deploy button](https://deno.com/deno-deploy-button.svg)](https://dash.deno.com/new?url=https://raw.githubusercontent.com/GizmoOAO/random-cute-bot/main/random-cute.ts&env=DISCORD_PUBLIC_KEY) |
+| Vercel      | [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FGizmoOAO%2Frandom-cute-bot&env=DISCORD_PUBLIC_KEY)                     |
 
 ## Thanks
 
